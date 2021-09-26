@@ -69,7 +69,12 @@ def maxVal(toConsider, avail):
        Returns a tuple of the total value of a solution to the problem
        and a list of Food that comprise the solution"""
 
-    """Expecting: 
+    """Expecting:
+    apple: <50, 95> - 50
+    wine: <89, 123>. - 139
+    cola: <79, 150>. - 218
+    beer: <90, 154>. - 308
+    donut: <10, 195>. - 318
     """
 
     ##################
@@ -77,6 +82,7 @@ def maxVal(toConsider, avail):
     ##################
     for food in toConsider:
       print(food)
+    print("------toConsider--------")
     sortedFoodList = sorted(toConsider, key=lambda x: (x.getCost(),x.getValue()), reverse=False)
     # sortedFoodList = sorted(toConsider, key=lambda x: (x.getValue(),x.getCost()), reverse=False)
     used = 0
@@ -106,8 +112,8 @@ def maxVal(toConsider, avail):
 
     for food in sortedFoodList:
         print(food)
-    
     for j in range(1,len(sortedFoodList)+1):
+        print(f"food{food}")
         # Exist == food can be eaten
         exists = True
         eat_i = 0
@@ -125,6 +131,7 @@ def maxVal(toConsider, avail):
             elif exists or i-food.getCost() < eat_i:
                 # if exists == False:
                   # print('statement works')
+                print(f"exists:{exists}, test: {exists * food.getValue()},food:{food}, highest:{highest}")
                 highest = max(valueMatrix[j-1,i], valueMatrix[j,i-food.getCost()] + (food.getValue()))
                 # highest = max(valueMatrix[j-1,i-food.getCost()] + (food.getValue()), valueMatrix[j,i])
                 valueMatrix[j,i] = highest
