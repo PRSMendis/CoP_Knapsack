@@ -107,6 +107,7 @@ def maxVal(toConsider, avail):
         eat_i = 0
         highest = 0
         food = sortedFoodList[j-1]
+        j_idx = j
         for i in range(1,avail+1):
             # print(f"i-food.getCost():{i-food.getCost()}, eat_i:{eat_i}")
             # Negative index case. Hence use value from above row
