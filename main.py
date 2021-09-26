@@ -69,9 +69,14 @@ def maxVal(toConsider, avail):
        Returns a tuple of the total value of a solution to the problem
        and a list of Food that comprise the solution"""
 
+    """Expecting: 
+    """
+
     ##################
     # YOUR CODE HERE #
     ##################
+    for food in toConsider:
+      print(food)
     sortedFoodList = sorted(toConsider, key=lambda x: (x.getCost(),x.getValue()), reverse=False)
     # sortedFoodList = sorted(toConsider, key=lambda x: (x.getValue(),x.getCost()), reverse=False)
     used = 0
@@ -89,7 +94,7 @@ def maxVal(toConsider, avail):
     print("greedy food list:")
     for food in foodList:
       print(food)
-    print(sum([num.getCost() for num in foodList]))
+    print(sum([food.getCost() for food in foodList]))
       
     # return (value, foodList)
     valueMatrix = np.zeros((len(sortedFoodList)+1,avail+1),dtype=int)
@@ -101,6 +106,7 @@ def maxVal(toConsider, avail):
 
     for food in sortedFoodList:
         print(food)
+    
     for j in range(1,len(sortedFoodList)+1):
         # Exist == food can be eaten
         exists = True
@@ -127,7 +133,7 @@ def maxVal(toConsider, avail):
                 #     print(f"exists:{exists}, test: {exists * food.getValue()},food:{food}, highest:{highest}")
                 #     print(f'{valueMatrix[j,i]}')
                 #     print(valueMatrix[1,0:100:10])
-                #     sys.exit(1)
+                #     sys.exit(1)`
                 if valueMatrix[j,i-food.getCost()] + food.getValue() > valueMatrix[j-1,i]:
                   if eat_i == 0: 
                     eat_i = i
@@ -142,8 +148,8 @@ def maxVal(toConsider, avail):
     # indexList = getIndexList(stepList)
     # print('valueMatrix summary:')
     # for row in valueMatrix:
-    #     print(row[indexList])
-    # print(valueMatrix)
+    #   print(row[indexList])
+    #   print(valueMatrix)
     return (0, [])
 
 def getIndexList(stepList):
