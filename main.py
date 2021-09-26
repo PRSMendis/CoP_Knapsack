@@ -135,7 +135,7 @@ def maxVal(toConsider, avail):
                   exists = False
             else:
                 valueMatrix[j,i] = highest
-    print(f"{sortedFoodList[j] = }")
+    print(f"{str(sortedFoodList[j_idx - 1]) = }")
     # with np.printoptions(threshold=np.inf):
     #     print(valueMatrix)
     print(valueMatrix)
